@@ -1,4 +1,5 @@
 from PySide6 import QtWidgets, QtCore, QtGui
+# important to prevent shiboken6 crash on exit
 from PySide6.QtWidgets import (QMainWindow, QDialog, QGridLayout, QVBoxLayout, QLabel, QLineEdit, QPushButton, QPlainTextEdit,
                                QHBoxLayout)
 import re
@@ -362,7 +363,7 @@ class buildRadialMenu_UI(QDialog):
 
         # Update colour controls for previewed preset
         self._load_colour_controls_for(name)
-        # 🔹 Clear any previously selected inner/child in the editor UI
+        # Clear any previously selected inner/child in the editor UI
         self._clear_editor_selection()
 
     def _squash_layouts(self, root: QtWidgets.QWidget, margin=2, spacing=2):
@@ -921,7 +922,7 @@ class buildRadialMenu_UI(QDialog):
             self.radial_widget._preview_name = name
             self.radial_widget._preview_preset(name)
 
-            # 🔹 Clear any previously selected inner/child in the editor UI
+            # Clear any previously selected inner/child in the editor UI
             self._clear_editor_selection()
 
 
@@ -934,3 +935,4 @@ def show_window():
         pass
     _simple_window_instance = buildRadialMenu_UI()
     _simple_window_instance.show()
+
